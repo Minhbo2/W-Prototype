@@ -6,13 +6,11 @@ using UnityEngine;
 /// ADD SCRIPT SUMMARY
 ///</summary>
 
-public class InputController : MonoBehaviour {
+public class CubeController : MonoBehaviour {
 
     //=================================================================================
     //Private Variables Members
     //=================================================================================
-    [SerializeField]
-    private LayerMask CubeMask;
     [SerializeField]
     private CubeSelector CubeSelector;
 
@@ -37,32 +35,31 @@ public class InputController : MonoBehaviour {
 	//=================================================================================
 
 	void Start () {
-        if (CubeSelector == null)
-            print("Require reference to CubeSelector");
+		
 	}
 	
 
 
 	void Update () {
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit Hit;
-            Ray InputRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(InputRay, out Hit, float.PositiveInfinity, CubeMask))
-            {
-                if (Hit.transform.gameObject != null)
-                    CubeSelector.Select(Hit.transform.GetComponent<Selectable>());
-            }
-        }
-	}
+        if (Input.GetKeyDown(KeyCode.A))
+            RotateSelectable(Vector3.left);
+        else if (Input.GetKeyDown(KeyCode.D))
+            RotateSelectable(Vector3.right);
+        else if (Input.GetKeyDown(KeyCode.W))
+            RotateSelectable(Vector3.forward);
+        else if (Input.GetKeyDown(KeyCode.S))
+            RotateSelectable(Vector3.down);
+    }
 
 
 
-	//=================================================================================
-	//Private Functions
-	//=================================================================================
+    //=================================================================================
+    //Private Functions
+    //=================================================================================
+    private void RotateSelectable(Vector3 Direction)
+    {
+        Transform Selected = CubeSelector.GetCurrentlySelected();
+    }
 
 
 
