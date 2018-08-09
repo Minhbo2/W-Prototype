@@ -65,4 +65,5 @@ public class CubeSelector : MonoBehaviour {
     //=================================================================================
 
     public Transform GetCurrentlySelected() { return CurrentlySelected.transform; }
+    public bool HasCurrentlySelected() { return GetCurrentlySelected() != null; }
 }
