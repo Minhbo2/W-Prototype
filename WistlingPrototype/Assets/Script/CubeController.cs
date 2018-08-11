@@ -51,14 +51,13 @@ public class CubeController : MonoBehaviour {
 	void Update () {
 
         if (Input.GetKeyDown(KeyCode.A))
-
-            RotateSelectable(Vector3.left);
-        else if (Input.GetKeyDown(KeyCode.D))
-            RotateSelectable(Vector3.right);
-        else if (Input.GetKeyDown(KeyCode.W))
             RotateSelectable(Vector3.forward);
+        else if (Input.GetKeyDown(KeyCode.D))
+            RotateSelectable(Vector3.back);
+        else if (Input.GetKeyDown(KeyCode.W))
+            RotateSelectable(Vector3.right);
         else if (Input.GetKeyDown(KeyCode.S))
-            RotateSelectable(Vector3.down);
+            RotateSelectable(Vector3.left);
 
 
         if (IsRotating)
